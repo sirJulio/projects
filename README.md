@@ -21,7 +21,7 @@ Each app lives in its own folder and is served at `projects.jdunne.au/<folder>/`
 
 ## Publishing
 
-A Cloudflare Workers project (static assets) named `projects`, connected to this repo's `main` branch. Every push to `main` redeploys. There is no build step. The preview address is `projects.sirjulio.workers.dev`, and the production address is `projects.jdunne.au`, attached under the Worker's Domains & Routes settings as a Custom Domain.
+A Cloudflare Workers project (static assets) named `projects`, connected to this repo's `main` branch. Every push to `main` redeploys. There is no build step. The preview address is `projects.sirjulio.workers.dev`, and the production address is `projects.jdunne.au`, declared in `wrangler.jsonc` (`routes` with `custom_domain`), so each deploy keeps it attached. `.assetsignore` keeps this README and the config files off the public site.
 
 ## Notes
 
