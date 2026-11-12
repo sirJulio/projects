@@ -21,7 +21,7 @@ Each app lives in its own folder and is served at `projects.jdunne.au/<folder>/`
 
 ## Publishing
 
-Cloudflare Pages, connected to this repo's `main` branch. No build command; build output directory `/` (leave it blank).
+A Cloudflare Workers project (static assets) named `projects`, connected to this repo's `main` branch. Every push to `main` redeploys. There is no build step. The preview address is `projects.sirjulio.workers.dev`, and the production address is `projects.jdunne.au`, attached under the Worker's Domains & Routes settings as a Custom Domain.
 
 ## Notes
 
