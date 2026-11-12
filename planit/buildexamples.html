@@ -43,8 +43,28 @@ table.grid{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px
 .stat-label{font:600 12px 'DM Sans',sans-serif;color:#4d564b;min-height:2.6em}
 .stat-value{font:800 clamp(24px,3vw,30px) Manrope,sans-serif;letter-spacing:-.8px;margin-top:8px;font-variant-numeric:tabular-nums}
 .stat-unit{font:500 10px 'DM Mono',monospace;letter-spacing:.8px;text-transform:uppercase;color:#8a9288;margin-top:4px}
+.points{margin:0 0 26px;padding-left:1.2em;max-width:78ch;font-size:14.5px;color:#3d463b}
+.points li{margin:0 0 9px;padding-left:.2em}
+.points li::marker{color:#7aa63a}
+.chart-title{font:700 15px Manrope,sans-serif;letter-spacing:-.2px;margin:6px 0 4px;padding-top:20px;border-top:1px solid var(--line)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 16px;font-size:12px;color:#5b6559}
+.key{display:inline-flex;align-items:center;gap:7px}
+.swatch{width:11px;height:11px;border-radius:3px;display:inline-block}
+.b-builder{background:#9aa39a}.b-unaided{background:var(--navy)}.b-planit{background:#7aa63a}
+.charts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.chart{margin:0;border:1px solid var(--line);border-radius:12px;padding:16px;background:#fbfcfa}
+.chart figcaption{font:600 13px 'DM Sans',sans-serif;line-height:1.35;color:var(--ink);min-height:2.7em;margin-bottom:12px}
+.bar-row{margin:0 0 12px}.bar-row:last-child{margin-bottom:0}
+.bar-label{display:block;font-size:11.5px;color:#5b6559;margin-bottom:4px}
+.bar-track{display:block;height:14px;background:#eef0ea;border-radius:7px;overflow:hidden}
+.bar-fill{display:block;height:100%;border-radius:7px}
+.bar-val{display:block;font:700 14px Manrope,sans-serif;font-variant-numeric:tabular-nums;margin-top:4px}
+.as-table{margin-top:22px;font-size:13px}
+.as-table summary{cursor:pointer;color:#4d564b;font-weight:600;margin-bottom:10px}
+.as-table summary:focus-visible{outline:2px solid #5b8a2c;outline-offset:2px;border-radius:4px}
 .foot{margin:22px 0 0;padding:14px 16px;border:1px dashed #dfe4da;border-radius:12px;color:#6d766a;font-size:12px;line-height:1.6}
 .foot p{margin:0 0 6px}.foot p:last-child{margin:0}
+@media(max-width:860px){.charts{grid-template-columns:1fr}.chart figcaption{min-height:0}}
 @media(max-width:700px){.app{padding:0 14px 40px}.panel{padding:16px 14px}.hero{padding-top:24px}.stats{grid-template-columns:1fr}.stat-label{min-height:0}}
 @media print{.tabs-wrap,.topbar{display:none}.panel[hidden]{display:block!important}.panel{box-shadow:none;break-inside:avoid-page;margin-bottom:18px}}
 </style>
@@ -56,8 +76,7 @@ table.grid{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px
   <section class="hero">
     <div class="eyebrow">planit &middot; Victorian owner-builder pathway</div>
     <h1>Build cost examples</h1>
-    <p class="lede">Three Melbourne builds, each costed three ways: a builder does everything, an owner-builder with no industry contacts, and an owner-builder using planit. This page shows estimated totals only, in AUD including GST. They are estimates, not quotes, and the assumptions behind them are not shown here. Prepared 3 November 2026.</p>
-  </section>
+ </section>
   <div class="tabs-wrap"><div class="tablist" role="tablist" aria-label="Examples">
 <button class="tab" role="tab" id="tab-summary" aria-controls="panel-summary" aria-selected="false" tabindex="-1" data-id="summary">Summary</button>
 <button class="tab" role="tab" id="tab-ex1" aria-controls="panel-ex1" aria-selected="false" tabindex="-1" data-id="ex1">Example 1</button>
@@ -65,16 +84,20 @@ table.grid{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px
 <button class="tab" role="tab" id="tab-ex3" aria-controls="panel-ex3" aria-selected="false" tabindex="-1" data-id="ex3">Example 3</button>
   </div></div>
 <section class="panel" id="panel-summary" role="tabpanel" aria-labelledby="tab-summary" tabindex="-1">
-<h2 class="sheet-title">Estimated total cash cost, three Melbourne examples</h2>
-<p class="sheet-sub">AUD, including GST. Each example is costed three ways. Totals only.</p>
-<div class="tablewrap" tabindex="0" role="region" aria-label="Summary table, scrolls sideways on narrow screens">
+<h2 class="sheet-title">Summary</h2>
+<ul class="points"><li>Three Melbourne builds, each costed three ways: a builder does the entire build, an owner-builder with no industry contacts, and an owner-builder using planit.</li><li>Using planit lowers the owner-builder total in every example, by $7,809 (Example 1), $57,458 (Example 2) and $126,284 (Example 3) compared with owner-building unaided.</li><li>Against a builder doing the entire build, the owner-builder total with planit is $10,573 lower in Example 1 and $90,604 lower in Example 3, and $18,931 higher in Example 2.</li><li>Owner-building without industry contacts costs more than a builder in Example 2 ($76,389 more) and Example 3 ($35,680 more), and $2,764 less in Example 1.</li><li>Every figure is an estimated total cash cost in AUD including GST. They are estimates, not quotes, and the assumptions behind them are not shown here.</li></ul>
+<h3 class="chart-title">Estimated total cash cost</h3>
+<p class="sheet-sub">AUD, including GST. Bars start at zero, and each example is drawn to its own scale.</p>
+<div class="legend"><span class="key"><i class="swatch b-builder"></i>Builder does the entire build</span><span class="key"><i class="swatch b-unaided"></i>Owner-builder, no industry contacts</span><span class="key"><i class="swatch b-planit"></i>Owner-builder with planit</span></div>
+<div class="charts"><figure class="chart"><figcaption>1. Two-bedroom extension, median Melbourne house</figcaption><div class="bar-row"><span class="bar-label">Builder does the entire build</span><span class="bar-track" aria-hidden="true"><span class="bar-fill b-builder" style="width:100.0%"></span></span><span class="bar-val">$123,444</span></div><div class="bar-row"><span class="bar-label">Owner-builder, no industry contacts</span><span class="bar-track" aria-hidden="true"><span class="bar-fill b-unaided" style="width:97.8%"></span></span><span class="bar-val">$120,680</span></div><div class="bar-row"><span class="bar-label">Owner-builder with planit</span><span class="bar-track" aria-hidden="true"><span class="bar-fill b-planit" style="width:91.4%"></span></span><span class="bar-val">$112,871</span></div></figure><figure class="chart"><figcaption>2. Land plus 3-bedroom home, Melbourne fringe suburb</figcaption><div class="bar-row"><span class="bar-label">Builder does the entire build</span><span class="bar-track" aria-hidden="true"><span class="bar-fill b-builder" style="width:91.8%"></span></span><span class="bar-val">$851,843</span></div><div class="bar-row"><span class="bar-label">Owner-builder, no industry contacts</span><span class="bar-track" aria-hidden="true"><span class="bar-fill b-unaided" style="width:100.0%"></span></span><span class="bar-val">$928,232</span></div><div class="bar-row"><span class="bar-label">Owner-builder with planit</span><span class="bar-track" aria-hidden="true"><span class="bar-fill b-planit" style="width:93.8%"></span></span><span class="bar-val">$870,774</span></div></figure><figure class="chart"><figcaption>3. Knockdown-rebuild, Camberwell</figcaption><div class="bar-row"><span class="bar-label">Builder does the entire build</span><span class="bar-track" aria-hidden="true"><span class="bar-fill b-builder" style="width:97.4%"></span></span><span class="bar-val">$1,329,483</span></div><div class="bar-row"><span class="bar-label">Owner-builder, no industry contacts</span><span class="bar-track" aria-hidden="true"><span class="bar-fill b-unaided" style="width:100.0%"></span></span><span class="bar-val">$1,365,163</span></div><div class="bar-row"><span class="bar-label">Owner-builder with planit</span><span class="bar-track" aria-hidden="true"><span class="bar-fill b-planit" style="width:90.7%"></span></span><span class="bar-val">$1,238,879</span></div></figure></div>
+<details class="as-table"><summary>View the same figures as a table</summary><div class="tablewrap" tabindex="0" role="region" aria-label="Summary table, scrolls sideways on narrow screens">
 <table class="grid">
 <thead><tr><th scope="col">Example</th><th scope="col" class="num">Builder does the entire build</th><th scope="col" class="num">Owner-builder, no industry contacts</th><th scope="col" class="num">Owner-builder with planit</th></tr></thead>
 <tbody>
 <tr><th scope="row">1. Two-bedroom extension, median Melbourne house</th><td class="num">$123,444</td><td class="num">$120,680</td><td class="num">$112,871</td></tr>
 <tr><th scope="row">2. Land plus 3-bedroom home, Melbourne fringe suburb</th><td class="num">$851,843</td><td class="num">$928,232</td><td class="num">$870,774</td></tr>
 <tr><th scope="row">3. Knockdown-rebuild, Camberwell</th><td class="num">$1,329,483</td><td class="num">$1,365,163</td><td class="num">$1,238,879</td></tr>
-</tbody></table></div>
+</tbody></table></div></details>
 </section>
 <section class="panel" id="panel-ex1" role="tabpanel" aria-labelledby="tab-ex1" tabindex="-1" hidden>
 <h2 class="sheet-title">1. Two-bedroom extension, median Melbourne house</h2>
@@ -92,7 +115,7 @@ table.grid{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px
 <div class="stats"><div class="stat"><div class="stat-label">Builder does the entire build</div><div class="stat-value">$1,329,483</div><div class="stat-unit">estimated total cash cost</div></div><div class="stat"><div class="stat-label">Owner-builder, no industry contacts</div><div class="stat-value">$1,365,163</div><div class="stat-unit">estimated total cash cost</div></div><div class="stat accent"><div class="stat-label">Owner-builder with planit</div><div class="stat-value">$1,238,879</div><div class="stat-unit">estimated total cash cost</div></div></div>
 </section>
   <div class="foot">
-    <p>Every figure is an estimate, not a quote. This is general information, not financial or legal advice. Owner-builders need a BPC Certificate of Consent for work over $20,000.</p>
+    <p>Prepared 3 November 2026. Every figure is an estimate, not a quote. This is general information, not financial or legal advice. Owner-builders need a BPC Certificate of Consent for work over $20,000.</p>
   </div>
 </div>
 <script>
